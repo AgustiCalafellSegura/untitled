@@ -2,7 +2,7 @@
 
 ## H2
 
-> Una mica de text
+> A little text
 
 ##Titles
 # Big title (h1)
