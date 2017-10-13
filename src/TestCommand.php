@@ -17,7 +17,7 @@ class TestCommand extends Command
     protected function configure()
     {
         $this
-            ->setName('app:test-command')
+            ->setName('app:test')
             ->setDescription('Test command.')
             ->setHelp('This command is only for testing purposes.')
         ;
