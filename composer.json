@@ -1,4 +1,13 @@
 {
+    "name": "agusti-calafell-segura/untitled",
+    "description": "A project to learn about Symfony components",
+    "license": "proprietary",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "": "src/"
+        }
+    },
     "require": {
         "symfony/console": "^3.3"
     }
