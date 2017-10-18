@@ -33,15 +33,8 @@ class TestCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-       $output->writeln('Hello World!');
-       $output->writeln('Hello World!');
-       $output->writeln('Hello World!');
-       $output->writeln('Hello World!');
-       $output->writeln('Hello World!');
-       $output->writeln('Hello World!');
-       $output->writeln('Hello World!');
-       $output->writeln('Hello World!');
-       $output->writeln('Hello World!');
-       $output->writeln('Hello World!');
+       for ($x = 0; $x <= 10; $x++) {
+       	   $output->writeln('Hello World!');
+       }
     }
 }
