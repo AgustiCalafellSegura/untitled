@@ -1,5 +1,0 @@
-1. pull changes in your local repository
-2. learn about markdown (MD) format here https://es.wikipedia.org/wiki/Markdown
-3. create a README.md file with a short description about this project
-4. push changes to remote (GitHub) repository
-5. enjoy!
