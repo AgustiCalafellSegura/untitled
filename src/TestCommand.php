@@ -5,6 +5,7 @@ namespace AppBundle\Command;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Console\Input\InputArgument;
 
 /**
  * Class TestCommand
@@ -20,7 +21,9 @@ class TestCommand extends Command
             ->setName('app:test')
             ->setDescription('Test command.')
             ->setHelp('This command is only for testing purposes.')
+	    ->addArgument('number', InputArgument::REQUIRED,'Introdueix quants cops vols que s'execute: ')
         ;
+
     }
 
     /**
@@ -33,11 +36,12 @@ class TestCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-	echo "Indica quants cops vols executar el Hola Mon!: ";
+	/**echo "Indica quants cops vols executar el Hola Mon!: ";
 
 	$execucions = trim(fgets(STDIN));
 
 	echo "\n";
+	*/
 
 	for ($x = 1; $x <= $execucions; $x++) {
 		if($x % 2 === 0){
