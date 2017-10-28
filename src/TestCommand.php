@@ -5,6 +5,7 @@ namespace AppBundle\Command;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Console\Input\InputArgument;
 
 /**
  * Class TestCommand
@@ -18,8 +19,9 @@ class TestCommand extends Command
     {
         $this
             ->setName('app:test')
-            ->setDescription('Test command.')
+            ->setDescription('A test command that prints a list of "Hello World" messages.')
             ->setHelp('This command is only for testing purposes.')
+            ->addArgument('number', InputArgument::REQUIRED, 'How many times the message will be printed')
         ;
     }
 
@@ -33,8 +35,12 @@ class TestCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-       for ($x = 0; $x <= 10; $x++) {
-       	   $output->writeln('Hello World!');
-       }
+        $times = $input->getArgument('number');
+
+        for ($x = 1; $x <= $times; $x++) {
+            if ($x % 2 === 0) {
+                $output->writeln('Hello World '.$x.'!');
+            }
+        }
     }
 }
