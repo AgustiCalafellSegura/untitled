@@ -47,12 +47,5 @@ class TestCommand extends Command
 	$output->writeln($first.' / '.$second.' = '.(round(($first/$second),2)));
 	$output->writeln($first.' ^ '.$second.' = '.(pow($first, $second)));
 
-
-	/**
-        for ($x = 1; $x <= $times; $x++) {
-            if ($x % 2 === 0) {
-                $output->writeln('Hello World '.$x.'!');
-            }
-        }*/
     }
 }
