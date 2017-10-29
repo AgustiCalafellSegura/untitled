@@ -39,7 +39,11 @@ class TestCommand extends Command
         $first = $input->getArgument('number1');
 	$second = $input->getArgument('number2');
 
-	$output->writeln('The greather number is: '.$second);
+	if ($first > $second) {
+		$output->writeln('The greather number is: '.$first);
+	} else {
+		$output->writeln('The greather number is: '.$second);
+	}
 
 	$output->writeln($first.' + '.$second.' = '.($first+$second));
 	$output->writeln($first.' - '.$second.' = '.($first-$second));
