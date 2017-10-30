@@ -18,11 +18,11 @@ class CalculatorCommand extends Command
     protected function configure()
     {
         $this
-            ->setName('app:test')
-            ->setDescription('A test command that prints a list of "Hello World" messages.')
-            ->setHelp('This command is only for testing purposes.')
-            ->addArgument('number1', InputArgument::REQUIRED, 'First number')
-	    ->addArgument('number2', InputArgument::REQUIRED, 'Second number') 
+            ->setName('app:calculator')
+            ->setDescription('That program do a calculator function and says which number is the greather')
+            ->setHelp('Calculator and greather number.')
+            ->addArgument('number1', InputArgument::REQUIRED, 'That is the first number')
+	    ->addArgument('number2', InputArgument::REQUIRED, 'That is the second number') 
         ;
     }
 
@@ -36,8 +36,8 @@ class CalculatorCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $first = $input->getArgument('number1');
-	$second = $input->getArgument('number2');
+        $first = $input->getArgument('That is the first number');
+	$second = $input->getArgument('That is the second number');
 
 	if ($first > $second) {
 		$output->writeln('The greather number is: '.$first);
