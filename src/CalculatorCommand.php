@@ -52,7 +52,7 @@ class CalculatorCommand extends Command
             $output->writeln($first.' * '.$second.' = '.($first * $second));
             $output->writeln($first.' / '.$second.' = '.(round(($first / $second), 2)));
             $output->writeln($first.' ^ '.$second.' = '.(pow($first, $second)));
-        } elseif ($second == 0) {
+        } else {
             $output->writeln('The greatest number is: '.$first);
             $output->writeln($first.' + '.$second.' = '.($first + $second));
             $output->writeln($first.' - '.$second.' = '.($first - $second));
