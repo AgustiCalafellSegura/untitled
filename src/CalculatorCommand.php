@@ -36,8 +36,8 @@ class CalculatorCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $first = $input->getArgument('That is the first number');
-	$second = $input->getArgument('That is the second number');
+        $first = $input->getArgument('number1');
+	$second = $input->getArgument('number2');
 
 	if ($first > $second) {
 		$output->writeln('The greather number is: '.$first);
