@@ -22,7 +22,8 @@ class CalculatorCommand extends Command
             ->setDescription('That program do a calculator function and says which number is the greather')
             ->setHelp('Calculator and greather number.')
             ->addArgument('number1', InputArgument::REQUIRED, 'That is the first number')
-            ->addArgument('number2', InputArgument::REQUIRED, 'That is the second number');
+            ->addArgument('number2', InputArgument::REQUIRED, 'That is the second number')
+        ;
     }
 
     /**

@@ -21,7 +21,7 @@ class TestCommand extends Command
             ->setName('app:test')
             ->setDescription('A test command that prints a list of "Hello World" messages.')
             ->setHelp('This command is only for testing purposes.')
-            ->addArgument('number', InputArgument::REQUIRED, 'How many times the message will be printed') 
+            ->addArgument('number', InputArgument::REQUIRED, 'How many times the message will be printed')
         ;
     }
 
@@ -37,10 +37,10 @@ class TestCommand extends Command
     {
         $times = $input->getArgument('number');
 
-	for ($x = 1; $x <= $times; $x++) {
-		if ($x % 2 === 0) {
-			$output->writeln('Hello World '.$x.'!');
-		}
-	}
+        for ($x = 1; $x <= $times; $x++) {
+            if ($x % 2 === 0) {
+                $output->writeln('Hello World '.$x.'!');
+            }
+        }
     }
 }
