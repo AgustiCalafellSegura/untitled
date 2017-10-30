@@ -19,8 +19,8 @@ class CalculatorCommand extends Command
     {
         $this
             ->setName('app:calculator')
-            ->setDescription('This command make a calculation between two numbers and says which one is the greatest')
-            ->setHelp('Calculator and greather number.')
+            ->setDescription('This command make a calculation between two numbers and says which one is the greatest.')
+            ->setHelp('This command is only for learning purposes.')
             ->addArgument('number1', InputArgument::REQUIRED, 'That is the first number')
             ->addArgument('number2', InputArgument::REQUIRED, 'That is the second number')
         ;
