@@ -39,17 +39,29 @@ class CalculatorCommand extends Command
         $first = $input->getArgument('number1');
 	$second = $input->getArgument('number2');
 
-	if ($first > $second) {
+	if ($second != 0) {
+
+		if ($first > $second) {
+			$output->writeln('The greather number is: '.$first);
+		} elseif ($first == $second) {
+			$output->writeln('Both numbers are equals');
+		} else {
+			$output->writeln('The greather number is: '.$second);
+		}
+
+		$output->writeln($first.' + '.$second.' = '.($first+$second));
+		$output->writeln($first.' - '.$second.' = '.($first-$second));
+		$output->writeln($first.' * '.$second.' = '.($first*$second));
+		$output->writeln($first.' / '.$second.' = '.(round(($first/$second),2)));
+		$output->writeln($first.' ^ '.$second.' = '.(pow($first, $second)));
+	} elseif ($second == 0) {
 		$output->writeln('The greather number is: '.$first);
-	} else {
-		$output->writeln('The greather number is: '.$second);
+
+		$output->writeln($first.' + '.$second.' = '.($first+$second));
+                $output->writeln($first.' - '.$second.' = '.($first-$second));
+                $output->writeln($first.' * '.$second.' = 0');
+                $output->writeln($first.' / '.$second.' = impossible to divide');
+                $output->writeln($first.' ^ '.$second.' = 1');
 	}
-
-	$output->writeln($first.' + '.$second.' = '.($first+$second));
-	$output->writeln($first.' - '.$second.' = '.($first-$second));
-	$output->writeln($first.' * '.$second.' = '.($first*$second));
-	$output->writeln($first.' / '.$second.' = '.(round(($first/$second),2)));
-	$output->writeln($first.' ^ '.$second.' = '.(pow($first, $second)));
-
     }
 }
