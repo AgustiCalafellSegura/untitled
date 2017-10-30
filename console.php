@@ -8,6 +8,7 @@ require __DIR__.'/src/CalculatorCommand.php';
 
 use Symfony\Component\Console\Application;
 use AppBundle\Command\TestCommand;
+use AppBundle\Command\CalculatorCommand;
 
 // init app
 $application = new Application();
