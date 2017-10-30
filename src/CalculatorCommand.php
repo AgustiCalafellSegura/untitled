@@ -22,8 +22,7 @@ class CalculatorCommand extends Command
             ->setDescription('That program do a calculator function and says which number is the greather')
             ->setHelp('Calculator and greather number.')
             ->addArgument('number1', InputArgument::REQUIRED, 'That is the first number')
-	    ->addArgument('number2', InputArgument::REQUIRED, 'That is the second number') 
-        ;
+            ->addArgument('number2', InputArgument::REQUIRED, 'That is the second number');
     }
 
     /**
@@ -37,19 +36,18 @@ class CalculatorCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $first = $input->getArgument('number1');
-	$second = $input->getArgument('number2');
+        $second = $input->getArgument('number2');
 
-	if ($first > $second) {
-		$output->writeln('The greather number is: '.$first);
-	} else {
-		$output->writeln('The greather number is: '.$second);
-	}
+        if ($first > $second) {
+            $output->writeln('The greather number is: '.$first);
+        } else {
+            $output->writeln('The greather number is: '.$second);
+        }
 
-	$output->writeln($first.' + '.$second.' = '.($first+$second));
-	$output->writeln($first.' - '.$second.' = '.($first-$second));
-	$output->writeln($first.' * '.$second.' = '.($first*$second));
-	$output->writeln($first.' / '.$second.' = '.(round(($first/$second),2)));
-	$output->writeln($first.' ^ '.$second.' = '.(pow($first, $second)));
-
+        $output->writeln($first.' + '.$second.' = '.($first + $second));
+        $output->writeln($first.' - '.$second.' = '.($first - $second));
+        $output->writeln($first.' * '.$second.' = '.($first * $second));
+        $output->writeln($first.' / '.$second.' = '.(round(($first / $second), 2)));
+        $output->writeln($first.' ^ '.$second.' = '.(pow($first, $second)));
     }
 }
