@@ -15,5 +15,7 @@ $application = new Application();
 
 // register commands
 $application->add(new TestCommand());
-
 $application->run();
+
+$app->add(new CalculatorCommand());
+$app->run();
