@@ -19,10 +19,10 @@ class CalculatorCommand extends Command
     {
         $this
             ->setName('app:calculator')
-            ->setDescription('That program do a calculator function and says which number is the greather')
-            ->setHelp('Calculator and greather number.')
+            ->setDescription('This command make a calculation between two numbers and says which one is the greatest.')
+            ->setHelp('This command is only for learning purposes.')
             ->addArgument('number1', InputArgument::REQUIRED, 'That is the first number')
-	    ->addArgument('number2', InputArgument::REQUIRED, 'That is the second number') 
+            ->addArgument('number2', InputArgument::REQUIRED, 'That is the second number')
         ;
     }
 
@@ -37,7 +37,8 @@ class CalculatorCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $first = $input->getArgument('number1');
-	$second = $input->getArgument('number2');
+        $second = $input->getArgument('number2');
+
 
 	if ($second != 0) {
 
