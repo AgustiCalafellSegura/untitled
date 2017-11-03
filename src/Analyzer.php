@@ -37,19 +37,19 @@ class Analyzer extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $phrase = $input->getArgument('word');
-	$words = count(explode(" ", $phrase));
-	$length = strlen($phrase);
+        $words = count(explode(" ", $phrase));
+        $length = strlen($phrase);
 
-	$output->writeln('The string ´'.$phrase.'´ has:');
-	$output->writeln('· '.$words.' words');
-	$output->writeln('· '.$length.' characters');
+        $output->writeln('The string ´'.$phrase.'´ has:');
+        $output->writeln('· '.$words.' words');
+        $output->writeln('· '.$length.' characters');
 
-	foreach(count_chars($phrase, 1) as $i => $val){
-		if ($val == 1){
-			$output->writeln('· character ´'.chr($i).'´ '.$val.' time');
-		} else {
-			$output->writeln('· character ´'.chr($i).'´ '.$val.' times');
-		}
-	}
+        foreach (count_chars($phrase, 1) as $i => $val) {
+            if ($val == 1) {
+                $output->writeln('· character ´'.chr($i).'´ '.$val.' time');
+            } else {
+                $output->writeln('· character ´'.chr($i).'´ '.$val.' times');
+            }
+        }
     }
 }
