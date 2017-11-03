@@ -40,20 +40,15 @@ class Analyzer extends Command
 	$words = count(explode(" ", $phrase));
 	$length = strlen($phrase);
 
-	output->writeln($words);
-	output->writeln('The string '.$phrase.' has:');
-	output->writeln('· '.$words.' words');
-	output->writeln('· '.$length.' characters');
+	$output->writeln('The string ´'.$phrase.'´ has:');
+	$output->writeln('· '.$words.' words');
+	$output->writeln('· '.$length.' characters');
 
-
-	$counta = 0;
-	$countb = 0;
-
-	for ($i = 0; $i < $length; i++) {
-		if ($phrase == "a") {
-			++$counta;
-		} elseif ($phrase == "b") {
-			++$countb;
+	foreach(count_chars($phrase, 1) as $i => $val){
+		if ($val == 1){
+			$output->writeln('· character ´'.chr($i).'´ '.$val.' time');
+		} else {
+			$output->writeln('· character ´'.chr($i).'´ '.$val.' times');
 		}
 	}
     }
