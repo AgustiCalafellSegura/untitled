@@ -19,7 +19,7 @@ class Analyzer extends Command
     {
         $this
             ->setName('app:string:analyzer')
-            ->setDescription('This command can count the letters that are repeated')
+            ->setDescription('This command can count the letters that are repeated.')
             ->setHelp('This command is only for learning purposes.')
             ->addArgument('word', InputArgument::REQUIRED, 'What is your phrase?')
         ;
