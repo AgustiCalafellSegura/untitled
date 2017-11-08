@@ -6,6 +6,8 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Input\InputArgument;
+use Symfony\Component\Validator\Validation;
+use Symfony\Component\Validator\Constraints\Type;
 
 /**
  * Class TestCommand
@@ -36,15 +38,34 @@ class AreaCalculatorCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        $validator = Validation::createValidator();
+
         $base = $input->getArgument('number1');
         $altura = $input->getArgument('number2');
 
-        $rectangle = new Rectangle();
+        $errors = $validator->validate($base, array(
+            new Type('integer')
+        ));
 
-        $rectangle->setBase($base);
-        $rectangle->setAltura($altura);
+        if(count($errors) > 0){
+            $output->writeln('La base te que ser un nombre enter');
+        }
 
-        $output->writeln('L\'area es: '.$rectangle->calcularArea());
+        $errors2 = $validator->validate($altura, array(
+            new Type('integer')
+        ));
 
+        if(count($errors2) > 0){
+            $output->writeln('La altura te que ser un nombre enter');
+        }
+
+        if((count($errors) == 0) || (count($errors2) == 0)){
+            $rectangle = new Rectangle();
+
+            $rectangle->setBase($base);
+            $rectangle->setAltura($altura);
+
+            $output->writeln('L\'area es: '.$rectangle->calcularArea());
+        }
     }
 }
