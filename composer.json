@@ -9,6 +9,7 @@
         }
     },
     "require": {
-        "symfony/console": "^3.3"
+        "symfony/console": "^3.3",
+	"symfony/validator": "^3.3"
     }
 }
