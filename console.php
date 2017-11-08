@@ -6,11 +6,16 @@ require __DIR__.'/vendor/autoload.php';
 require __DIR__.'/src/TestCommand.php';
 require __DIR__.'/src/CalculatorCommand.php';
 require __DIR__.'/src/Analyzer.php';
+require __DIR__.'/src/AreaCalculatorCommand.php';
+require __DIR__.'/src/Rectangle.php';
+
+
 
 use Symfony\Component\Console\Application;
 use AppBundle\Command\TestCommand;
 use AppBundle\Command\CalculatorCommand;
 use AppBundle\Command\Analyzer;
+use AppBundle\Command\AreaCalculatorCommand;
 
 // init app
 $application = new Application();
@@ -19,5 +24,6 @@ $application = new Application();
 $application->add(new TestCommand());
 $application->add(new CalculatorCommand());
 $application->add(new Analyzer());
+$application->add(new AreaCalculatorCommand());
 
 $application->run();

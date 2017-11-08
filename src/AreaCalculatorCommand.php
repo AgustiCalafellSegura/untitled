@@ -39,9 +39,12 @@ class AreaCalculatorCommand extends Command
         $base = $input->getArgument('number1');
         $altura = $input->getArgument('number2');
 
+        $rectangle = new Rectangle();
 
+        $rectangle->setBase($base);
+        $rectangle->setAltura($altura);
 
-        $output->writeln('The greatest number is: '.$first);
+        $output->writeln('L\'area es: '.$rectangle->calcularArea());
 
     }
 }
