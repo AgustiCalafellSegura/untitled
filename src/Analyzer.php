@@ -6,6 +6,8 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Input\InputArgument;
+use Symfony\Component\Validator\Validation;
+use Symfony\Component\Validator\Constraints\Type;
 
 /**
  * Class TestCommand
@@ -24,7 +26,6 @@ class Analyzer extends Command
             ->addArgument('word', InputArgument::REQUIRED, 'What is your phrase?')
         ;
     }
-
     /**
      * Command execution
      *
@@ -36,9 +37,20 @@ class Analyzer extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        $validator = Validation::createValidator();
+
         $phrase = $input->getArgument('word');
         $words = count(explode(" ", $phrase));
         $length = strlen($phrase);
+
+        $errors = $validator->validate($words, array(
+            new Type('string')
+        ));
+
+        if(count($errors) < 3){
+            $output->writeln('The input string has more than 3 characters.');
+        }
+
 
         $output->writeln('The string ´'.$phrase.'´ has:');
         $output->writeln('· '.$words.' words');
