@@ -23,7 +23,7 @@ class Game extends Command
             ->setName('app:game:rps')
             ->setDescription('This command can play one time to Rock, Paper & Scissors')
             ->setHelp('This command is only for learning purposes.')
-            ->addArgument('word', InputArgument::REQUIRED, 'What is your hand?')
+            ->addArgument('shape', InputArgument::REQUIRED, 'What is your hand?')
         ;
     }
     /**
@@ -37,9 +37,9 @@ class Game extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $validator = Validation::createValidator();
+        /*$validator = Validation::createValidator();
 
-        $hand = $input->getArgument('word');
+        $hand = $input->getArgument('shape');
 
         $errors = $validator->validate($hand, array(
             new Type('string')
@@ -85,6 +85,59 @@ class Game extends Command
             } else {
                 $output->writeln('Error! You can only choose "rock", "paper" or "scissors" to play.');
             }
+        }
+
+        $hand1 = new Hand();
+
+        $hand1->makeRock();
+        $output->writeln('Tens la ma en posició '.$hand1->getShape());
+
+        $hand1->makePaper();
+        $output->writeln('Tens la ma en posició '.$hand1->getShape());*/
+
+        $shape = $input->getArgument('shape');
+
+        if($shape!=Hand::ROCK && $shape!=Hand::PAPER && $shape!=Hand::SCISSOR){
+            $output->writeln('Error! You only can chose rock, paper or scissors');
+            return null;
+        }
+
+        $hand = new Hand();
+
+        if($shape == Hand::ROCK){
+            $hand->makeRock();
+        } elseif ($shape == Hand::PAPER){
+            $hand->makePaper();
+        } else {
+            $hand->makeScissor();
+        }
+
+        $output->writeln('Tens la ma en posició '.$hand->getShape());
+
+        $handnumber = rand(1,3);
+        $computerHand = new Hand();
+
+        if($handnumber == 1){
+            $computerHand->makeRock();
+        } elseif ($handnumber == 2){
+            $computerHand->makePaper();
+        } else {
+            $computerHand->makeScissor();
+        }
+
+        $output->writeln('Computer la ma en posició '.$computerHand->getShape());
+
+        $judge = new Judge();
+
+        $winner = $judge->decideWhoWins($hand,$computerHand);
+
+        $output->writeln($winner);
+        if($winner == 0){
+            $output->writeln('Withdraw');
+        } elseif ($winner == 1){
+            $output->writeln('The winner is 1 player');
+        } else {
+            $output->writeln('The winner is 2 player');
         }
     }
 }

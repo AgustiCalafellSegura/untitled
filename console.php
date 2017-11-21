@@ -9,6 +9,9 @@ require __DIR__.'/src/Analyzer.php';
 require __DIR__.'/src/AreaCalculatorCommand.php';
 require __DIR__.'/src/Rectangle.php';
 require __DIR__.'/src/Game.php';
+require __DIR__.'/src/Hand.php';
+require __DIR__.'/src/Judge.php';
+
 
 
 use Symfony\Component\Console\Application;
