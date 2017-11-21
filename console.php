@@ -11,8 +11,7 @@ require __DIR__.'/src/Rectangle.php';
 require __DIR__.'/src/Game.php';
 require __DIR__.'/src/Hand.php';
 require __DIR__.'/src/Judge.php';
-
-
+require __DIR__.'/src/HandFactory.php';
 
 use Symfony\Component\Console\Application;
 use AppBundle\Command\TestCommand;
