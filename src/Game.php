@@ -37,64 +37,6 @@ class Game extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        /*$validator = Validation::createValidator();
-
-        $hand = $input->getArgument('shape');
-
-        $errors = $validator->validate($hand, array(
-            new Type('string')
-        ));
-
-        if (count($errors) > 0) {
-            $output->writeln('That was not a word.');
-        }
-
-        $a=array("rock","paper","scissors");
-        $num = rand(0, 2);
-        $paraula_aleatoria = ($a[$num]);
-
-        if (strcmp($hand, $paraula_aleatoria) === 0){
-            $output->writeln('Computer have choosen: \''.$paraula_aleatoria.'\'');
-            $output->writeln('Withdraw, nobody wins.');
-
-        } else {
-
-            if (($hand === "rock") && ($paraula_aleatoria === "paper")){
-                $output->writeln('Computer have choosen: \''. $paraula_aleatoria.'\'');
-                $output->writeln('Computer wins!');
-
-            } elseif (($hand === "rock") && ($paraula_aleatoria === "scissors")){
-                $output->writeln('Computer have choosen: \''.$paraula_aleatoria.'\'');
-                $output->writeln('You win!');
-
-            } elseif (($hand === "paper") && ($paraula_aleatoria === "rock")){
-                $output->writeln('Computer have choosen: \''.$paraula_aleatoria.'\'');
-                $output->writeln('You win!');
-
-            } elseif (($hand === "paper") && ($paraula_aleatoria === "scissors")){
-                $output->writeln('Computer have choosen: \''. $paraula_aleatoria.'\'');
-                $output->writeln('Computer wins!');
-
-            } elseif (($hand === "scissors") && ($paraula_aleatoria === "rock")){
-                $output->writeln('Computer have choosen: \''.$paraula_aleatoria.'\'');
-                $output->writeln('Computer wins!');
-
-            } elseif (($hand === "scissors") && ($paraula_aleatoria === "paper")){
-                $output->writeln('Computer have choosen: \''.$paraula_aleatoria.'\'');
-                $output->writeln('You win!');
-            } else {
-                $output->writeln('Error! You can only choose "rock", "paper" or "scissors" to play.');
-            }
-        }
-
-        $hand1 = new Hand();
-
-        $hand1->makeRock();
-        $output->writeln('Tens la ma en posició '.$hand1->getShape());
-
-        $hand1->makePaper();
-        $output->writeln('Tens la ma en posició '.$hand1->getShape());*/
-
         $shape = $input->getArgument('shape');
 
         if($shape!=Hand::ROCK && $shape!=Hand::PAPER && $shape!=Hand::SCISSOR){
@@ -103,9 +45,9 @@ class Game extends Command
         }
 
         $factory = new HandFactory();
-        $hand = $factory->buildHumanHand($shape);
+        $humanhand = $factory->buildHumanHand($shape);
 
-        $output->writeln('Tens la ma en posició '.$hand->getShape());
+        $output->writeln('Tens la ma en posició '.$humanhand->getShape());
 
         $computerHand = $factory->buildComputerHand();
 
@@ -113,7 +55,7 @@ class Game extends Command
 
         $judge = new Judge();
 
-        $winner = $judge->decideWhoWins($hand,$computerHand);
+        $winner = $judge->decideWhoWins($humanhand,$computerHand);
 
         $output->writeln($winner);
         if($winner == 0){
