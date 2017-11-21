@@ -45,15 +45,13 @@ class Game extends Command
         }
 
         $factory = new HandFactory();
+        $judge = new Judge();
+
         $humanhand = $factory->buildHumanHand($shape);
-
-        $output->writeln('Tens la ma en posició '.$humanhand->getShape());
-
         $computerHand = $factory->buildComputerHand();
 
+        $output->writeln('Tens la ma en posició '.$humanhand->getShape());
         $output->writeln('Computer la ma en posició '.$computerHand->getShape());
-
-        $judge = new Judge();
 
         $winner = $judge->decideWhoWins($humanhand,$computerHand);
 
