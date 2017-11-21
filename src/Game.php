@@ -102,28 +102,12 @@ class Game extends Command
             return null;
         }
 
-        $hand = new Hand();
-
-        if($shape == Hand::ROCK){
-            $hand->makeRock();
-        } elseif ($shape == Hand::PAPER){
-            $hand->makePaper();
-        } else {
-            $hand->makeScissor();
-        }
+        $factory = new HandFactory();
+        $hand = $factory->buildHumanHand($shape);
 
         $output->writeln('Tens la ma en posició '.$hand->getShape());
 
-        $handnumber = rand(1,3);
-        $computerHand = new Hand();
-
-        if($handnumber == 1){
-            $computerHand->makeRock();
-        } elseif ($handnumber == 2){
-            $computerHand->makePaper();
-        } else {
-            $computerHand->makeScissor();
-        }
+        $computerHand = $factory->buildComputerHand();
 
         $output->writeln('Computer la ma en posició '.$computerHand->getShape());
 
