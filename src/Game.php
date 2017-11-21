@@ -40,7 +40,7 @@ class Game extends Command
         $shape = $input->getArgument('shape');
 
         if($shape!=Hand::ROCK && $shape!=Hand::PAPER && $shape!=Hand::SCISSOR){
-            $output->writeln('Error! You only can chose rock, paper or scissors');
+            $output->writeln('Error! You only can chose rock, paper or scissor');
             return null;
         }
 
