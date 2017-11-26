@@ -56,6 +56,7 @@ class Game extends Command
         $winner = $judge->decideWhoWins($humanhand,$computerHand);
 
         $output->writeln($winner);
+
         if($winner == 0){
             $output->writeln('Withdraw');
         } elseif ($winner == 1){

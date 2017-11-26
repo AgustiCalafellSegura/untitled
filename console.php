@@ -12,6 +12,9 @@ require __DIR__.'/src/Game.php';
 require __DIR__.'/src/Hand.php';
 require __DIR__.'/src/Judge.php';
 require __DIR__.'/src/HandFactory.php';
+require __DIR__.'/src/Song.php';
+require __DIR__.'/src/Album.php';
+require __DIR__.'/src/Artist.php';
 
 use Symfony\Component\Console\Application;
 use AppBundle\Command\TestCommand;
