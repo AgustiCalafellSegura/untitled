@@ -8,6 +8,7 @@
 
 namespace AppBundle\Command;
 
+use Symfony\Component\Console\Output\Output as Output;
 
 class Album
 {
@@ -29,13 +30,28 @@ class Album
     + removeSong(song)
     */
 
+    /**
+     * @var string
+     */
     private $title;
-    private $genere;
-    private $year;
-    private $songs = array(title, genere, year);
 
     /**
-     * @return mixed
+     * @var string
+     */
+    private $genere;
+
+    /**
+     * @var string
+     */
+    private $year;
+
+    /**
+     * @var array
+     */
+    private $songs;
+
+    /**
+     * @return string
      */
     public function getTitle()
     {
@@ -43,15 +59,17 @@ class Album
     }
 
     /**
-     * @param $title
+     * @param string $title
+     * @return Album
      */
     public function setTitle($title)
     {
         $this->title = $title;
+        return $this;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getGenere()
     {
@@ -59,15 +77,17 @@ class Album
     }
 
     /**
-     * @param $genere
+     * @param string $genere
+     * @return Album
      */
     public function setGenere($genere)
     {
         $this->genere = $genere;
+        return $this;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getYear()
     {
@@ -75,11 +95,13 @@ class Album
     }
 
     /**
-     * @param $year
+     * @param string $year
+     * @return Album
      */
     public function setYear($year)
     {
         $this->year = $year;
+        return $this;
     }
 
     /**
@@ -91,19 +113,28 @@ class Album
     }
 
     /**
-     * @param $songs
+     * @param array $songs
+     * @return Album
      */
     public function setSongs($songs)
     {
         $this->songs = $songs;
+        return $this;
     }
 
     /**
+     * @return mixed
+     */
+
+
+    /**
      * @param $song
+     * @return $this
      */
     public function addSong($song)
     {
-        $this->songs = array_push($song);
+        $this->songs[] = $song;
+        return $this;
     }
 
     /**
@@ -112,5 +143,22 @@ class Album
     public function removeSong($song)
     {
         $this->songs = array_diff($song);
+    }
+
+    /**
+     * @return string
+     */
+    public function toString()
+    {
+        return 'Album: '.$this->getTitle().' '.$this->getGenere().' '.$this->getYear();
+    }
+
+    public function printSongs(Output $output)
+    {
+        /** @var Song $song */
+        foreach ($this->songs as $song)
+        {
+            $output->writeln($song->toString());
+        }
     }
 }

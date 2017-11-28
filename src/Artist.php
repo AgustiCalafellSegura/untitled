@@ -8,6 +8,7 @@
 
 namespace AppBundle\Command;
 
+use Symfony\Component\Console\Output\OutputInterface as Output;
 
 class Artist
 {
@@ -23,48 +24,66 @@ class Artist
     + removeAlbum(album)
     */
 
+    /**
+     * @var string
+     */
     private $name;
-    private $albums = array(name);
 
     /**
-     * @param $name
-     * @return mixed
+     * @var array
      */
-    public function getName($name)
+    private $albums;
+
+    /**
+     * @return string
+     */
+    public function getName()
     {
         return $this->name;
     }
 
     /**
-     * @param $name
+     * @param string $name
+     * @return Artist
      */
     public function setName($name)
     {
         $this->name = $name;
+        return $this;
     }
 
     /**
-     * @return mixed
+     * @return array
      */
     public function getAlbums()
     {
-        return $this->$albums;
+        return $this->albums;
     }
 
     /**
-     * @param $albums
+     * @param array $albums
+     * @return Artist
      */
     public function setAlbums($albums)
     {
         $this->albums = $albums;
+        return $this;
     }
 
     /**
+     * @param $name
+     * @return mixed
+     */
+
+
+    /**
      * @param $album
+     * @return $this
      */
     public function addAlbum($album)
     {
-        $this->albums = array_push($album);
+        $this->albums[] = $album;
+        return $this;
     }
 
     /**
@@ -72,5 +91,23 @@ class Artist
      */
     public function removeAlbum($album){
         $this->albums = array_diff($album);
+    }
+
+    /**
+     * @return string
+     */
+    public function toString()
+    {
+        return 'Artist: '.$this->getName();
+    }
+
+    public function printArtist(Output $output)
+    {
+        /** @var Album $album */
+        foreach ($this->albums as $album)
+        {
+            $output->writeln($album->toString());
+            $album->printSongs($output);
+        }
     }
 }

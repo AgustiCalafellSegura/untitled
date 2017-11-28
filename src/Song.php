@@ -24,12 +24,23 @@ class Song
     + setStars(stars)
     */
 
+    /**
+     * @var string
+     */
     private $name;
+
+    /**
+     * @var integer
+     */
     private $duration;
+
+    /**
+     * @var integer
+     */
     private $stars;
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getName()
     {
@@ -37,15 +48,17 @@ class Song
     }
 
     /**
-     * @param $name
+     * @param string $name
+     * @return Song
      */
     public function setName($name)
     {
         $this->name = $name;
+        return $this;
     }
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getDuration()
     {
@@ -53,15 +66,17 @@ class Song
     }
 
     /**
-     * @param $duration
+     * @param int $duration
+     * @return Song
      */
     public function setDuration($duration)
     {
         $this->duration = $duration;
+        return $this;
     }
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getStars()
     {
@@ -69,10 +84,21 @@ class Song
     }
 
     /**
-     * @param $stars
+     * @param int $stars
+     * @return Song
      */
     public function setStars($stars)
     {
         $this->stars = $stars;
+        return $this;
+    }
+
+
+    /**
+     * @return string
+     */
+    public function toString()
+    {
+        return 'Song: '.$this->getName().' '.$this->getDuration().' '.$this->getStars();
     }
 }
