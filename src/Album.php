@@ -50,6 +50,11 @@ class Album
      */
     private $songs;
 
+    public function __construct()
+    {
+        $this->songs = array();
+    }
+
     /**
      * @return string
      */
@@ -155,10 +160,14 @@ class Album
 
     public function printSongs(Output $output)
     {
-        /** @var Song $song */
-        foreach ($this->songs as $song)
-        {
-            $output->writeln($song->toString());
+        if(count($this->songs) != 0){
+            /** @var Song $song */
+            foreach ($this->songs as $song)
+            {
+                $output->writeln($song->toString());
+            }
+        } else {
+            $output->writeln('Not songs');
         }
     }
 }
