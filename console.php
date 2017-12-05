@@ -18,6 +18,7 @@ require __DIR__.'/src/Artist.php';
 require __DIR__.'/src/MusicPlayerCommand.php';
 require __DIR__.'/src/ArtistManagerListCommand.php';
 require __DIR__.'/src/ArtistManagerCreateCommand.php';
+require __DIR__.'/src/ArtistManagerRemoveCommand.php';
 
 use Symfony\Component\Console\Application;
 use AppBundle\Command\TestCommand;
@@ -28,6 +29,7 @@ use AppBundle\Command\Game;
 use AppBundle\Command\MusicPlayerCommand;
 use AppBundle\Command\ArtistManagerListCommand;
 use AppBundle\Command\ArtistManagerCreateCommand;
+use AppBundle\Command\ArtistManagerRemoveCommand;
 
 // init app
 $application = new Application();
@@ -41,5 +43,6 @@ $application->add(new Game());
 $application->add(new MusicPlayerCommand());
 $application->add(new ArtistManagerListCommand());
 $application->add(new ArtistManagerCreateCommand());
+$application->add(new ArtistManagerRemoveCommand());
 
 $application->run();
