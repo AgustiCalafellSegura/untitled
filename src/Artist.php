@@ -10,22 +10,23 @@ namespace AppBundle\Command;
 
 use Symfony\Component\Console\Output\OutputInterface as Output;
 
+/**
+ * @Entity
+ * @Table(name="artist")
+ **/
 class Artist
 {
-    /*
-    - name : string
-    - albums : Album[]
-    --------------------
-    + getName()
-    + setName(name)
-    + getAlbums()
-    + setAlbums(albums)
-    + addAlbum(album)
-    + removeAlbum(album)
-    */
+    /**
+     * @var integer
+     * @Id
+     * @Column(type="integer")
+     * @GeneratedValue
+     */
+    private $id;
 
     /**
      * @var string
+     * @Column(type="string")
      */
     private $name;
 
@@ -33,6 +34,15 @@ class Artist
      * @var array
      */
     private $albums;
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
 
     /**
      * @return string

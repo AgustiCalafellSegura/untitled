@@ -2,3 +2,4 @@
 vendor/
 composer.phar
 scr/.CalculatorCommand.php.swp
+db.sqlite

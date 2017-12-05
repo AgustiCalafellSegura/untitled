@@ -12,23 +12,6 @@ use Symfony\Component\Console\Output\Output as Output;
 
 class Album
 {
-    /*
-    - title : string
-    - genere : string
-    - year : integer
-    - songs : Song[]
-    --------------------
-    + getTitle()
-    + setTitle(title)
-    + getGenere()
-    + setGenere(genere)
-    + getYear()
-    + setYear(year)
-    + getSongs()
-    + setSongs(songs)
-    + addSong(song)
-    + removeSong(song)
-    */
 
     /**
      * @var string
