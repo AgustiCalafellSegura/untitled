@@ -108,7 +108,7 @@ class Artist
      */
     public function toString()
     {
-        return 'Artist: '.$this->getName();
+        return 'Artist: '.$this->getName().' ID: '.$this->getId();
     }
 
     public function printArtist(Output $output)

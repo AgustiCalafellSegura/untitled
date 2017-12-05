@@ -16,7 +16,8 @@ require __DIR__.'/src/Song.php';
 require __DIR__.'/src/Album.php';
 require __DIR__.'/src/Artist.php';
 require __DIR__.'/src/MusicPlayerCommand.php';
-
+require __DIR__.'/src/ArtistManagerListCommand.php';
+require __DIR__.'/src/ArtistManagerCreateCommand.php';
 
 use Symfony\Component\Console\Application;
 use AppBundle\Command\TestCommand;
@@ -25,6 +26,8 @@ use AppBundle\Command\Analyzer;
 use AppBundle\Command\AreaCalculatorCommand;
 use AppBundle\Command\Game;
 use AppBundle\Command\MusicPlayerCommand;
+use AppBundle\Command\ArtistManagerListCommand;
+use AppBundle\Command\ArtistManagerCreateCommand;
 
 // init app
 $application = new Application();
@@ -36,5 +39,7 @@ $application->add(new Analyzer());
 $application->add(new AreaCalculatorCommand());
 $application->add(new Game());
 $application->add(new MusicPlayerCommand());
+$application->add(new ArtistManagerListCommand());
+$application->add(new ArtistManagerCreateCommand());
 
 $application->run();
