@@ -10,21 +10,35 @@ namespace AppBundle\Command;
 
 use Symfony\Component\Console\Output\Output as Output;
 
+/**
+ * @Entity
+ * @Table(name="album")
+ */
 class Album
 {
+    /**
+     * @var integer
+     * @Id
+     * @Column(type="integer")
+     * @GeneratedValue
+     */
+    private $id;
 
     /**
      * @var string
+     * @Column(type="string")
      */
     private $title;
 
     /**
      * @var string
+     * @Column(type="string")
      */
     private $genere;
 
     /**
-     * @var string
+     * @var integer
+     * @Column(type="integer")
      */
     private $year;
 
@@ -32,6 +46,14 @@ class Album
      * @var array
      */
     private $songs;
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
     public function __construct()
     {
@@ -138,7 +160,7 @@ class Album
      */
     public function toString()
     {
-        return 'Album: '.$this->getTitle().' '.$this->getGenere().' '.$this->getYear();
+        return 'Album: '.$this->getTitle().' Genere:'.$this->getGenere().' Year:'.$this->getYear().' ID: '.$this->getId();
     }
 
     public function printSongs(Output $output)

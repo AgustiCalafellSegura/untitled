@@ -9,6 +9,7 @@
 namespace AppBundle\Command;
 
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Doctrine\ORM\Tools\Setup;
@@ -17,7 +18,7 @@ use Doctrine\ORM\EntityManager;
 // bootstrap.php
 require_once "vendor/autoload.php";
 
-class MusicPlayerCommand extends Command
+class AlbumManagerCreateCommand extends Command
 {
     /**
      * @var EntityManager
@@ -27,9 +28,12 @@ class MusicPlayerCommand extends Command
     protected function configure()
     {
         $this
-            ->setName('app:music:player')
-            ->setDescription('This command can play one time to Rock, Paper & Scissors')
+            ->setName('app:album:create')
+            ->setDescription('Create album')
             ->setHelp('This command is only for learning purposes.')
+            ->addArgument('title', InputArgument::REQUIRED, 'New title')
+            ->addArgument('genere', InputArgument::REQUIRED, 'New genere')
+            ->addArgument('year', InputArgument::REQUIRED, 'New year')
         ;
 
         $paths = array(__DIR__);
@@ -51,48 +55,18 @@ class MusicPlayerCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $song1 = new Song();
-        $song1
-            ->setName('Yellow submarine')
-            ->setDuration(120)
-            ->setStars(5)
+        $title = $input->getArgument('title');
+        $genere = $input->getArgument('genere');
+        $year = $input->getArgument('year');
+
+        $album = new Album();
+        $album
+            ->setTitle($title)
+            ->setGenere($genere)
+            ->setYear($year)
         ;
 
-        $song2 = new Song();
-        $song2
-            ->setName('Cocaine')
-            ->setDuration(65)
-            ->setStars(4)
-           ;
-
-        $album1 = new Album();
-        $album1
-            ->setGenere('Folk')
-            ->setTitle('Great Hits')
-            ->setYear(2017)
-            ->addSong($song1)
-            ->addSong($song2)
-        ;
-
-
-        $album2 = new Album();
-        $album2
-            ->setGenere('Rock')
-            ->setTitle('Great Hits 2')
-            ->setYear(2016)
-        ;
-
-
-        $sinatraMix = new Artist();
-        $sinatraMix
-            ->setName('Sinatra')
-            ->addAlbum($album1)
-            ->addAlbum($album2)
-        ;
-
-        $this->entityManager->persist($sinatraMix);
+        $this->entityManager->persist($album);
         $this->entityManager->flush();
-        $output->writeln($sinatraMix->toString());
-        $sinatraMix->printArtist($output);
     }
 }

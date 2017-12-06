@@ -19,6 +19,10 @@ require __DIR__.'/src/MusicPlayerCommand.php';
 require __DIR__.'/src/ArtistManagerListCommand.php';
 require __DIR__.'/src/ArtistManagerCreateCommand.php';
 require __DIR__.'/src/ArtistManagerRemoveCommand.php';
+require __DIR__.'/src/ArtistManagerUpdateCommand.php';
+require __DIR__.'/src/AlbumManagerListCommand.php';
+require __DIR__.'/src/AlbumManagerCreateCommand.php';
+require __DIR__.'/src/AlbumManagerRemoveCommand.php';
 
 use Symfony\Component\Console\Application;
 use AppBundle\Command\TestCommand;
@@ -30,6 +34,10 @@ use AppBundle\Command\MusicPlayerCommand;
 use AppBundle\Command\ArtistManagerListCommand;
 use AppBundle\Command\ArtistManagerCreateCommand;
 use AppBundle\Command\ArtistManagerRemoveCommand;
+use AppBundle\Command\ArtistManagerUpdateCommand;
+use AppBundle\Command\AlbumManagerListCommand;
+use AppBundle\Command\AlbumManagerCreateCommand;
+use AppBundle\Command\AlbumManagerRemoveCommand;
 
 // init app
 $application = new Application();
@@ -44,5 +52,9 @@ $application->add(new MusicPlayerCommand());
 $application->add(new ArtistManagerListCommand());
 $application->add(new ArtistManagerCreateCommand());
 $application->add(new ArtistManagerRemoveCommand());
+$application->add(new ArtistManagerUpdateCommand());
+$application->add(new AlbumManagerListCommand());
+$application->add(new AlbumManagerCreateCommand());
+$application->add(new AlbumManagerRemoveCommand());
 
 $application->run();
