@@ -163,12 +163,13 @@ class Album
 
 
     /**
-     * @param $song
+     * @param Song $song
      * @return $this
      */
     public function addSong($song)
     {
         $this->songs[] = $song;
+        $song->setAlbum($this);
         return $this;
     }
 

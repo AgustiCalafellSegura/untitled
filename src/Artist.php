@@ -81,18 +81,13 @@ class Artist
     }
 
     /**
-     * @param $name
-     * @return mixed
-     */
-
-
-    /**
-     * @param $album
+     * @param Album $album
      * @return $this
      */
     public function addAlbum($album)
     {
         $this->albums[] = $album;
+        $album->setArtist($this);
         return $this;
     }
 
