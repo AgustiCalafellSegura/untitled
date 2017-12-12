@@ -32,7 +32,7 @@ class Artist
 
     /**
      * @var array
-     * @OneToMany(targetEntity="Album", mappedBy="artist")
+     * @OneToMany(targetEntity="Album", mappedBy="artist", cascade={"persist"})
      */
     private $albums;
 

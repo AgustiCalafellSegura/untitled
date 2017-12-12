@@ -50,7 +50,7 @@ class Album
 
     /**
      * @var array
-     * @OneToMany(targetEntity="Song", mappedBy ="album")
+     * @OneToMany(targetEntity="Song", mappedBy ="album", cascade={"persist"})
      */
     private $songs;
 
