@@ -24,6 +24,7 @@ require __DIR__.'/src/AlbumManagerListCommand.php';
 require __DIR__.'/src/AlbumManagerCreateCommand.php';
 require __DIR__.'/src/AlbumManagerRemoveCommand.php';
 require __DIR__.'/src/AlbumManagerUpdateCommand.php';
+require __DIR__.'/src/ArtistManagerShowCommand.php';
 
 use Symfony\Component\Console\Application;
 use AppBundle\Command\TestCommand;
@@ -40,6 +41,7 @@ use AppBundle\Command\AlbumManagerListCommand;
 use AppBundle\Command\AlbumManagerCreateCommand;
 use AppBundle\Command\AlbumManagerRemoveCommand;
 use AppBundle\Command\AlbumManagerUpdateCommand;
+use AppBundle\Command\ArtistManagerShowCommand;
 
 // init app
 $application = new Application();
@@ -59,5 +61,6 @@ $application->add(new AlbumManagerListCommand());
 $application->add(new AlbumManagerCreateCommand());
 $application->add(new AlbumManagerRemoveCommand());
 $application->add(new AlbumManagerUpdateCommand());
+$application->add(new ArtistManagerShowCommand());
 
 $application->run();

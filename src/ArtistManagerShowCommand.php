@@ -9,6 +9,7 @@
 namespace AppBundle\Command;
 
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Doctrine\ORM\Tools\Setup;
@@ -17,7 +18,7 @@ use Doctrine\ORM\EntityManager;
 // bootstrap.php
 require_once "vendor/autoload.php";
 
-class ArtistManagerListCommand extends Command
+class ArtistManagerShowCommand extends Command
 {
     /**
      * @var EntityManager
@@ -27,9 +28,10 @@ class ArtistManagerListCommand extends Command
     protected function configure()
     {
         $this
-            ->setName('app:artist:list')
+            ->setName('app:artist:show')
             ->setDescription('List all artist')
             ->setHelp('This command is only for learning purposes.')
+            ->addArgument('id', InputArgument::REQUIRED, 'Search id')
         ;
 
         $paths = array(__DIR__);
@@ -51,11 +53,13 @@ class ArtistManagerListCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $artists = $this->entityManager->getRepository("AppBundle\Command\Artist")->findAll();
 
-        /** @var Artist $artist */
-        foreach ($artists as $artist){
-            $output->writeln($artist->toString());
+        $artist = $this->entityManager->getRepository('Artist')->find($input->getArgument('id'));
+
+        if($artist != null){
+            $output->writeln("L'artiste amb el id ".$artist->getId()." és ".$artist->getName());
+        } else {
+            $output->writeln("No s'ha trobat");
         }
     }
 }
