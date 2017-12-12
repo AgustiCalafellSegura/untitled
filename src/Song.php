@@ -8,36 +8,74 @@
 
 namespace AppBundle\Command;
 
-
+/**
+ * @Entity
+ * @Table(name="song")
+ */
 class Song
 {
-    /*
-    - name : string
-    - duration : integer
-    - stars : integer
-    --------------------
-    + getName()
-    + setName(name)
-    + getDuration()
-    + setDuration(duration)
-    + getStars()
-    + setStars(stars)
-    */
+    /**
+     * @var integer
+     * @Id
+     * @Column(type="integer")
+     * @GeneratedValue
+     */
+    private $id;
 
     /**
      * @var string
+     * @Column(type="string")
      */
     private $name;
 
     /**
      * @var integer
+     * @Column(type="integer")
      */
     private $duration;
 
     /**
      * @var integer
+     * @Column(type="integer")
      */
     private $stars;
+
+    /**
+     * @var array
+     * @ManyToOne(targetEntity="Album", inversedBy="songs")
+     */
+    private $album;
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     * @return Song
+     */
+
+    /**
+     * @return array
+     */
+    public function getAlbum()
+    {
+        return $this->album;
+    }
+
+    /**
+     * @param array $album
+     * @return Song
+     */
+    public function setAlbum($album)
+    {
+        $this->album = $album;
+        return $this;
+    }
 
     /**
      * @return string

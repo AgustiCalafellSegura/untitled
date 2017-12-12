@@ -32,6 +32,7 @@ class Artist
 
     /**
      * @var array
+     * @OneToMany(targetEntity="Album", mappedBy="artist")
      */
     private $albums;
 
@@ -42,7 +43,6 @@ class Artist
     {
         return $this->id;
     }
-
 
     /**
      * @return string

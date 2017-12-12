@@ -25,6 +25,12 @@ class Album
     private $id;
 
     /**
+     * @var Artist
+     * @ManyToOne(targetEntity="Artist", inversedBy="albums")
+     */
+    private $artist;
+
+    /**
      * @var string
      * @Column(type="string")
      */
@@ -44,8 +50,14 @@ class Album
 
     /**
      * @var array
+     * @OneToMany(targetEntity="Song", mappedBy ="album")
      */
     private $songs;
+
+    public function __construct()
+    {
+        $this->songs = array();
+    }
 
     /**
      * @return int
@@ -55,9 +67,22 @@ class Album
         return $this->id;
     }
 
-    public function __construct()
+    /**
+     * @return Artist
+     */
+    public function getArtist()
     {
-        $this->songs = array();
+        return $this->artist;
+    }
+
+    /**
+     * @param Artist $artist
+     * @return Album
+     */
+    public function setArtist($artist)
+    {
+        $this->artist = $artist;
+        return $this;
     }
 
     /**
